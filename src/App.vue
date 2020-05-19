@@ -1,10 +1,7 @@
 <template>
   <div id="app">
     <amplify-authenticator>
-      <amplify-sign-in
-        header-text="Image Upload & Rekognition Demo"
-        slot="sign-in"
-      ></amplify-sign-in>
+      <amplify-sign-in header-text="Image Upload & Rekognition Demo" slot="sign-in"></amplify-sign-in>
       <div>
         <img alt="Vue logo" src="./assets/logo.png" />
         <div v-if="img === ''">
@@ -12,7 +9,8 @@
           <input type="file" accept="image/jpeg" @change="putS3Image($event)" />
         </div>
         <div style="margin:10px" v-if="result !== ''">
-          <strong>Objects found:</strong> {{ result.join(', ') }}
+          <strong>Objects found:</strong>
+          {{ result.join(', ') }}
         </div>
         <div v-if="img !== ''">
           <img v-bind:src="img" />
@@ -25,41 +23,38 @@
   </div>
 </template>
 <script>
-import Storage from '@aws-amplify/storage';
-import API, { graphqlOperation } from '@aws-amplify/api';
-import { speakTranslatedImageText } from './graphql/queries';
+import Storage from "@aws-amplify/storage";
+import API, { graphqlOperation } from "@aws-amplify/api";
+import { speakTranslatedImageText } from "./graphql/queries";
 export default {
-  name: 'App',
+  name: "App",
   data() {
     return {
-      result: '',
-      img: '',
-      file: '',
+      result: "",
+      img: "",
+      file: ""
     };
   },
   methods: {
-    handleFileUpload() {
-      this.file = this.$refs.file.files[0];
-    },
     putS3Image(event) {
       const file = event.target.files[0];
       Storage.put(file.name, file)
-        .then(async (result) => {
+        .then(async result => {
           this.result = await this.speakTranslatedImageTextOP(result.key);
           this.img = await Storage.get(result.key);
         })
-        .catch((err) => console.log(err));
+        .catch(err => console.log(err));
     },
     async speakTranslatedImageTextOP(key) {
       const inputObj = {
-        identifyLabels: { key },
+        identifyLabels: { key }
       };
       const response = await API.graphql(
         graphqlOperation(speakTranslatedImageText, { input: inputObj })
       );
       return response.data.speakTranslatedImageText;
-    },
-  },
+    }
+  }
 };
 </script>
 <style>
