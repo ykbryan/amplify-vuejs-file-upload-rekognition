@@ -70,4 +70,8 @@ export default {
   max-width: 200px;
   margin: 20px auto;
 }
+img {
+  max-width: 500px;
+  max-height: 325px;
+}
 </style>
