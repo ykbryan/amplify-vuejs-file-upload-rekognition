@@ -11,8 +11,8 @@
           <h3>Upload Image</h3>
           <input type="file" accept="image/jpeg" @change="putS3Image($event)" />
         </div>
-        <div style="margin:10px" v-if="img !== ''">
-          <strong>Objects found:</strong> {{ src.join(', ') }}
+        <div style="margin:10px" v-if="result !== ''">
+          <strong>Objects found:</strong> {{ result.join(', ') }}
         </div>
         <div v-if="img !== ''">
           <img v-bind:src="img" />
@@ -32,7 +32,7 @@ export default {
   name: 'App',
   data() {
     return {
-      src: '',
+      result: '',
       img: '',
       file: '',
     };
@@ -40,20 +40,17 @@ export default {
   methods: {
     handleFileUpload() {
       this.file = this.$refs.file.files[0];
-      console.log(this.file);
     },
     putS3Image(event) {
       const file = event.target.files[0];
       Storage.put(file.name, file)
         .then(async (result) => {
-          this.src = await this.speakTranslatedImageTextOP(result.key);
+          this.result = await this.speakTranslatedImageTextOP(result.key);
           this.img = await Storage.get(result.key);
-          console.log(this.img, this.src);
         })
         .catch((err) => console.log(err));
     },
     async speakTranslatedImageTextOP(key) {
-      // key = 'public/' + key;
       const inputObj = {
         identifyLabels: { key },
       };
