@@ -14,6 +14,12 @@
         "categories": {
             "auth": {
                 "amplifyvueimagefdf41dae": {}
+            },
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "d34mdo31pa2jx7",
+                    "type": "cicd"
+                }
             }
         }
     }
