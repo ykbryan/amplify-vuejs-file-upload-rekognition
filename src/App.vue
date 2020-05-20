@@ -15,6 +15,9 @@
         <div v-if="img !== ''">
           <img v-bind:src="img" />
         </div>
+        <div>
+          <input type="button" v-if="img !== ''" value="Reset" @click="reset" />
+        </div>
         <div id="amplify-signout">
           <amplify-sign-out></amplify-sign-out>
         </div>
@@ -25,34 +28,37 @@
 <script>
 import Storage from "@aws-amplify/storage";
 import API, { graphqlOperation } from "@aws-amplify/api";
-import { speakTranslatedImageText } from "./graphql/queries";
+import { identifyLabels } from "./graphql/queries";
 export default {
   name: "App",
   data() {
     return {
       result: "",
-      img: "",
-      file: ""
+      img: ""
     };
   },
   methods: {
+    reset() {
+      this.result = "";
+      this.img = "";
+    },
     putS3Image(event) {
       const file = event.target.files[0];
       Storage.put(file.name, file)
         .then(async result => {
-          this.result = await this.speakTranslatedImageTextOP(result.key);
+          this.result = await this.identifyLabels(result.key);
           this.img = await Storage.get(result.key);
         })
         .catch(err => console.log(err));
     },
-    async speakTranslatedImageTextOP(key) {
+    async identifyLabels(key) {
       const inputObj = {
         identifyLabels: { key }
       };
       const response = await API.graphql(
-        graphqlOperation(speakTranslatedImageText, { input: inputObj })
+        graphqlOperation(identifyLabels, { input: inputObj })
       );
-      return response.data.speakTranslatedImageText;
+      return response.data.identifyLabels;
     }
   }
 };
