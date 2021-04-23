@@ -1,28 +1,23 @@
 <template>
   <div id="app">
-    <amplify-authenticator>
-      <amplify-sign-in header-text="Image Upload & Rekognition Demo" slot="sign-in"></amplify-sign-in>
-      <div>
-        <img alt="Vue logo" src="./assets/logo.png" />
-        <div v-if="img === ''">
-          <h3>Upload Image</h3>
-          <input type="file" accept="image/jpeg" @change="putS3Image($event)" />
-        </div>
-        <div style="margin:10px" v-if="result !== ''">
-          <strong>Objects found:</strong>
-          {{ result.join(', ') }}
-        </div>
-        <div v-if="img !== ''">
-          <img v-bind:src="img" />
-        </div>
-        <div>
-          <input type="button" v-if="img !== ''" value="Reset" @click="reset" />
-        </div>
-        <div id="amplify-signout">
-          <amplify-sign-out></amplify-sign-out>
-        </div>
-      </div>
-    </amplify-authenticator>
+    <img alt="Vue logo" src="./assets/logo.png" />
+    <div v-if="img === ''">
+      <h3>Upload Image</h3>
+      <input type="file" accept="image/jpeg" @change="putS3Image($event)" />
+    </div>
+    <div style="margin:10px" v-if="result !== ''">
+      <strong>Objects found:</strong>
+      {{ result.join(', ') }}
+    </div>
+    <div v-if="img !== ''">
+      <img v-bind:src="img" />
+    </div>
+    <div>
+      <input type="button" v-if="img !== ''" value="Reset" @click="reset" />
+    </div>
+    <div id="amplify-signout">
+      <amplify-sign-out></amplify-sign-out>
+    </div>
   </div>
 </template>
 <script>

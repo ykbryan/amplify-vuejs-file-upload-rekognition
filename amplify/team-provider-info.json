@@ -1,26 +1,27 @@
 {
-    "dev": {
-        "awscloudformation": {
-            "AuthRoleName": "amplify-amplifyvueimage-dev-84657-authRole",
-            "UnauthRoleArn": "arn:aws:iam::566416766292:role/amplify-amplifyvueimage-dev-84657-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::566416766292:role/amplify-amplifyvueimage-dev-84657-authRole",
-            "Region": "ap-southeast-1",
-            "DeploymentBucketName": "amplify-amplifyvueimage-dev-84657-deployment",
-            "UnauthRoleName": "amplify-amplifyvueimage-dev-84657-unauthRole",
-            "StackName": "amplify-amplifyvueimage-dev-84657",
-            "StackId": "arn:aws:cloudformation:ap-southeast-1:566416766292:stack/amplify-amplifyvueimage-dev-84657/698d77f0-9a33-11ea-94a3-066c5dc7e038",
-            "AmplifyAppId": "d1ea94j25lepjf"
-        },
-        "categories": {
-            "auth": {
-                "amplifyvueimaged5671a3e": {}
-            },
-            "hosting": {
-                "amplifyhosting": {
-                    "appId": "d1ea94j25lepjf",
-                    "type": "cicd"
-                }
-            }
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-amplifyvueimage-dev-84657-authRole",
+      "UnauthRoleArn": "arn:aws:iam::566416766292:role/amplify-amplifyvueimage-dev-84657-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::566416766292:role/amplify-amplifyvueimage-dev-84657-authRole",
+      "Region": "ap-southeast-1",
+      "DeploymentBucketName": "amplify-amplifyvueimage-dev-84657-deployment",
+      "UnauthRoleName": "amplify-amplifyvueimage-dev-84657-unauthRole",
+      "StackName": "amplify-amplifyvueimage-dev-84657",
+      "StackId": "arn:aws:cloudformation:ap-southeast-1:566416766292:stack/amplify-amplifyvueimage-dev-84657/698d77f0-9a33-11ea-94a3-066c5dc7e038",
+      "AmplifyAppId": "d1ea94j25lepjf"
+    },
+    "categories": {
+      "auth": {
+        "amplifyvueimaged5671a3e": {},
+        "amplifyvueimagefdf41dae": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d1ea94j25lepjf",
+          "type": "cicd"
         }
+      }
     }
+  }
 }

@@ -1,6 +1,6 @@
 {
     "identityPoolName": "amplifyvueimagefdf41dae_identitypool_fdf41dae",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "ampliffdf41dae",
     "userPoolName": "amplifyvueimagefdf41dae_userpool_fdf41dae",
     "autoVerifiedAttributes": [
